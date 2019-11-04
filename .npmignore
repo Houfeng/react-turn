@@ -1,0 +1,15 @@
+*.log
+.DS_Store
+node_modules/
+.nyc_output/
+coverage/
+test/
+design/
+logs/
+temp/
+.dawn/
+tsconfig.json
+tslint.json
+server.yml
+src/
+.awcache/

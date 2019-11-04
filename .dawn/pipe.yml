@@ -1,0 +1,40 @@
+init:
+  - name: pkginfo
+
+dev:
+  - name: clean
+  - name: typescript
+  - name: webpack
+    entry: ./src/Demo/*.tsx
+    template: ./src/Demo/*.html
+    watch: true
+  - name: server
+  - name: browser-sync
+
+build:
+  - name: clean
+  - name: typescript
+  - name: webpack
+    common:
+      disabled: true
+    folders:
+      js: '.'
+      css: '.'
+    compress: false
+    sourceMap: false
+    library: true
+    env: production
+    umd:
+      library: '${project.name}'
+      libraryTarget: 'umd'
+      umdNamedDefine: true
+
+test:
+  - name: tslint
+
+publish:
+  - name: shell
+    script:
+      - dn test
+      - dn build
+      - npm pu --registry=http://registry.npmjs.org

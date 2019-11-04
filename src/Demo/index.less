@@ -1,0 +1,51 @@
+body {
+  padding: 48px;
+
+  .demo {
+    background: #000;
+    @padding: 32px;
+    padding: @padding;
+    text-align: center;
+    width: max-content;
+    margin: auto;
+    border-radius: 4px;
+
+    .switch {
+      margin-top: @padding;
+
+      button {
+        width: 64px;
+      }
+
+      button,
+      select {
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0 4px;
+        padding: 8px 16px;
+        border: 2px solid #ddd;
+        background: rgba(255, 255, 255, .9);
+        border-radius: 2px;
+        text-transform: capitalize;
+        color: #333;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .turn-view {
+      @size: 400px;
+      width: @size;
+      height: @size * 9/16;
+      line-height: @size * 9/16;
+      font-size: 48px;
+      color: rgba(255, 255, 255, .8);
+      text-align: center;
+      display: block;
+      margin: auto;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "outDir": "./build/",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "./types",
+    "noImplicitAny": true,
+    "module": "esnext",
+    "target": "es5",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "noUnusedLocals": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": true,
+    "resolveJsonModule": false,
+    "importHelpers": false,
+    "lib": [
+      "dom",
+      "es2019"
+    ]
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ]
+}
