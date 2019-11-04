@@ -33,6 +33,8 @@ test:
   - name: tslint
 
 publish:
+  - name: version
+  - name: submitter
   - name: shell
     script:
       - dn test
