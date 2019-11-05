@@ -1,9 +1,14 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { addClass, addEndEvent, removeClass, removeEndEvent } from "./util";
 import { CSSAnimation } from "./CSSAnimation";
 import { ICSSAnimation } from "./ICSSAnimation";
 import { IRenderInfo, ITurnDriver, ITurnViewProps, random } from "../TurnView";
 import { isNullOrUndefined } from "util";
+
+export function findElement(ref: any) {
+  return ReactDOM.findDOMNode(ref) as HTMLElement;
+}
 
 export class CSSDriver implements ITurnDriver {
   public animation: ICSSAnimation;
@@ -19,8 +24,8 @@ export class CSSDriver implements ITurnDriver {
   }
 
   init = (current: IRenderInfo, prev: IRenderInfo) => {
-    if (current) addClass(current.ref, "turn-item");
-    if (prev) addClass(prev.ref, "turn-item");
+    if (current) addClass(findElement(current.ref), "turn-item");
+    if (prev) addClass(findElement(prev.ref), "turn-item");
   };
 
   turn = (current: IRenderInfo, prev: IRenderInfo) => {
@@ -28,27 +33,27 @@ export class CSSDriver implements ITurnDriver {
       let count = 0;
       const done = () => {
         if (++count < 2) return;
-        if (current) removeEndEvent(current.ref, done);
-        if (prev) removeEndEvent(prev.ref, done);
+        if (current) removeEndEvent(findElement(current.ref), done);
+        if (prev) removeEndEvent(findElement(prev.ref), done);
         resolve();
       };
       if (current) {
-        addClass(current.ref, this.animation.enter);
-        addEndEvent(current.ref, done);
+        addEndEvent(findElement(current.ref), done);
+        addClass(findElement(current.ref), this.animation.enter);
       }
       if (prev) {
-        addClass(prev.ref, this.animation.leave);
-        addEndEvent(prev.ref, done);
+        addEndEvent(findElement(prev.ref), done);
+        addClass(findElement(prev.ref), this.animation.leave);
       }
     });
   };
 
   done = (current: IRenderInfo, prev: IRenderInfo) => {
     if (current) {
-      removeClass(current.ref, this.animation.enter);
+      removeClass(findElement(current.ref), this.animation.enter);
     }
     if (prev) {
-      removeClass(prev.ref, this.animation.leave);
+      removeClass(findElement(prev.ref), this.animation.leave);
     }
   };
 

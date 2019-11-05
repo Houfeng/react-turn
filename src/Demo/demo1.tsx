@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { model, binding } from "mota";
-import { CSSAnimation, CSSDriver, TurnView, randomColor } from "../";
-import "./index.less";
+import { binding, model } from "mota";
+import { CSSAnimation, CSSDriver, randomColor, TurnView } from "..";
+import "./demo1.less";
 
 export class DemoModel {
   truning = false;
@@ -45,7 +45,7 @@ export class Demo extends React.Component {
     );
   }
 
-  renderList() {
+  renderSwitch() {
     const { truning, next, prev } = this.model;
     return (
       <div className="switch">
@@ -70,7 +70,7 @@ export class Demo extends React.Component {
     return (
       <div className="demo">
         {this.renderView()}
-        {this.renderList()}
+        {this.renderSwitch()}
       </div>
     );
   }

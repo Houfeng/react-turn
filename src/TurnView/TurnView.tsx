@@ -130,7 +130,7 @@ export class TurnView extends React.Component<ITurnViewProps> {
   ) {
     if (nextProps.value === prevState.value) return null;
     const { value, driver, children, render } = nextProps;
-    const prev = prevState.current;
+    const prev = { ...prevState.current };
     const current: IRenderInfo = { key: String(value) };
     const element = children || render();
     current.element = React.cloneElement(element, {

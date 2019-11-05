@@ -3,16 +3,22 @@ init:
 
 dev:
   - name: clean
+    target:
+      - build
+      - types
   - name: typescript
   - name: webpack
     entry: ./src/Demo/*.tsx
-    template: ./src/Demo/*.html
+    template: ./src/Demo/assets/*.html
     watch: true
   - name: server
   - name: browser-sync
 
 build:
   - name: clean
+    target:
+      - build
+      - types
   - name: typescript
   - name: webpack
     common:

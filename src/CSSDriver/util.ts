@@ -28,6 +28,7 @@ export function addEvent(
   name: string,
   handler: EventListenerOrEventListenerObject
 ) {
+  if (!element || !name || !handler) return;
   element.addEventListener(name, handler, false);
 }
 
@@ -36,6 +37,7 @@ export function removeEvent(
   name: string,
   handler: EventListenerOrEventListenerObject
 ) {
+  if (!element || !name || !handler) return;
   element.removeEventListener(name, handler, false);
 }
 
