@@ -1,14 +1,14 @@
-# 简介
+# 一、简介
 
 React Turn 是一个「功能强、体积小、易使用」的「转场动画」组件，
 对 Route Router 有较好的支持。
 
-# 安装
+# 二、安装
 ```bash
 npm i react-trun --save
 ```
 
-# 使用
+# 三、使用
 
 ## 单独使用
 最简单的使用方式就是一个普通的 div 一样
@@ -65,6 +65,6 @@ TurnSwitch.associate(Switch, Route);
 当然，也可以不使用 `TurnSwitch`，而直接在 React Router 中使用 `TurnView`，  
 可参考这个示例：[https://codesandbox.io/s/turn-route-demo2-y6u7y](https://codesandbox.io/s/turn-route-demo2-y6u7y)
 
-# 如果开发 Driver
+# 四、开发 Driver
 
 TODO://
