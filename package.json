@@ -1,14 +1,28 @@
 {
   "name": "react-turn",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "./lib/index.js",
   "types": "./types/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "animation",
+    "transition",
+    "router",
+    "router-transition",
+    "react-router",
+    "react-turn",
+    "motion",
+    "react-motion"
+  ],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Houfeng/react-turn.git"
+  },
   "devDependencies": {
     "@types/react-dom": "^16.9.3",
     "@types/react-router-dom": "^5.1.2",
