@@ -1,21 +1,37 @@
 import React from "react";
 import { CSSDriver, TurnView } from "..";
-import { Switch, Route } from "react-router-dom";
 import { ITurnViewProps } from "../TurnView";
 
-export interface ITurnSwitchProps extends ITurnViewProps {}
+export interface ITurnSwitchProps {
+  turn?: ITurnViewProps;
+  [name: string]: any;
+}
 
-export function TurnSwitch(props: ITurnSwitchProps) {
-  const { children } = props;
-  return (
-    <Route
-      render={({ location }) => {
-        return (
-          <TurnView value={location.pathname} driver={new CSSDriver()}>
-            <Switch location={location}>{children}</Switch>
-          </TurnView>
-        );
-      }}
-    />
-  );
+export class TurnSwitch extends React.Component<ITurnSwitchProps> {
+  static OriginSwitch: any = null;
+  static OriginRoute: any = null;
+
+  static associate = (originSwitch: any, originRoute: any) => {
+    TurnSwitch.OriginSwitch = originSwitch;
+    TurnSwitch.OriginRoute = originRoute;
+  };
+
+  renderView = ({ location }: any) => {
+    const { OriginSwitch } = TurnSwitch;
+    if (!OriginSwitch) throw new Error(`Please associate Switch`);
+    const { children, turn, ...others } = this.props;
+    return (
+      <TurnView driver={new CSSDriver()} value={location.pathname} {...turn}>
+        <OriginSwitch {...others} location={location}>
+          {children}
+        </OriginSwitch>
+      </TurnView>
+    );
+  };
+
+  render() {
+    const { OriginRoute } = TurnSwitch;
+    if (!OriginRoute) throw new Error(`Please associate Route`);
+    return <OriginRoute render={this.renderView} />;
+  }
 }

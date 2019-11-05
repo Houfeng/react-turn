@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { CSSDriver, randomColor, TurnView } from "..";
-import { HashRouter, Link, Route, RouteProps, Switch } from "react-router-dom";
+import { randomColor, TurnSwitch } from "..";
+import { HashRouter, Link, Route, Switch } from "react-router-dom";
 import "./demo2.less";
+
+TurnSwitch.associate(Switch, Route);
 
 export class Home extends React.Component {
   state = { background: randomColor() };
@@ -29,18 +31,6 @@ export class PageB extends React.Component {
 }
 
 export class Demo extends React.Component {
-  renderView({ location }: RouteProps) {
-    return (
-      <TurnView value={location.pathname} driver={new CSSDriver()}>
-        <Switch location={location}>
-          <Route path="/" component={Home} exact={true} />
-          <Route path="/a" component={PageA} exact={true} />
-          <Route path="/b" component={PageB} exact={true} />
-        </Switch>
-      </TurnView>
-    );
-  }
-
   renderLinks() {
     return (
       <div className="links">
@@ -61,7 +51,11 @@ export class Demo extends React.Component {
     return (
       <HashRouter>
         <div className="demo">
-          <Route render={this.renderView} />
+          <TurnSwitch>
+            <Route path="/" component={Home} exact={true} />
+            <Route path="/a" component={PageA} exact={true} />
+            <Route path="/b" component={PageB} exact={true} />
+          </TurnSwitch>
           {this.renderLinks()}
         </div>
       </HashRouter>
