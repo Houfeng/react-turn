@@ -34,7 +34,7 @@ import { TurnView } from "react-turn";
 </TurnView>
 ```
 
-完成整的示例：[https://codesandbox.io/s/turn-demo-wh51f](https://codesandbox.io/s/turn-demo-wh51f)
+完整的示例: [https://codesandbox.io/s/turn-demo-wh51f](https://codesandbox.io/s/turn-demo-wh51f)
 
 
 ## 在 Router 中使用
@@ -60,9 +60,9 @@ TurnSwitch.associate(Switch, Route);
 其中 `TurnSwitch` 的属性同 `Switch` 基乎一样，仅多了一个 `turn` 用于指定转场动相关的设定，
 `turn` 和 `TrunView` 的属性一致。
 
-完成的示例：[https://codesandbox.io/s/turn-route-demo1-dh8wx](https://codesandbox.io/s/turn-route-demo1-dh8wx)
+完整的示例: [https://codesandbox.io/s/turn-route-demo1-dh8wx](https://codesandbox.io/s/turn-route-demo1-dh8wx)
 
-当然，也可以不使用 `TurnSwitch`，而直接在 React Router 中使用 `TurnView`，
+当然，也可以不使用 `TurnSwitch`，而直接在 React Router 中使用 `TurnView`，  
 可参考这个示例：[https://codesandbox.io/s/turn-route-demo2-y6u7y](https://codesandbox.io/s/turn-route-demo2-y6u7y)
 
 # 如果开发 Driver
