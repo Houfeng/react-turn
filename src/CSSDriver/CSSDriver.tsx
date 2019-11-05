@@ -3,7 +3,13 @@ import ReactDOM from "react-dom";
 import { addClass, addEndEvent, removeClass, removeEndEvent } from "./util";
 import { CSSAnimation } from "./CSSAnimation";
 import { ICSSAnimation } from "./ICSSAnimation";
-import { IRenderInfo, ITurnDriver, ITurnViewProps, random } from "../TurnView";
+import {
+  IRenderInfo,
+  ITurnDriver,
+  ITurnViewProps,
+  random,
+  ITurnDriverRender
+} from "../TurnView";
 import { isNullOrUndefined } from "util";
 
 export function findElement(ref: any) {
@@ -13,7 +19,7 @@ export function findElement(ref: any) {
 export class CSSDriver implements ITurnDriver {
   public animation: ICSSAnimation;
 
-  constructor(public type?: string | number) {
+  constructor(public type?: string | number, render?: ITurnDriverRender) {
     if (isNullOrUndefined(type)) {
       type = random(0, CSSAnimation.length - 1);
     }
@@ -21,6 +27,7 @@ export class CSSDriver implements ITurnDriver {
       ? CSSAnimation.find(item => item.name === String(type))
       : CSSAnimation[Number(type)];
     this.animation = animation || CSSAnimation[0];
+    if (render) this.render = render;
   }
 
   init = (current: IRenderInfo, prev: IRenderInfo) => {
@@ -57,7 +64,10 @@ export class CSSDriver implements ITurnDriver {
     }
   };
 
-  render = (content: React.ReactNode, props?: ITurnViewProps) => {
+  render: ITurnDriverRender = (
+    content: React.ReactNode,
+    props?: ITurnViewProps
+  ) => {
     const { className = "", style } = props;
     return (
       <div className={className} style={style}>
